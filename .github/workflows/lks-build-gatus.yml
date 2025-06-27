@@ -1,19 +1,18 @@
-name: Example Gatus' Job (1/2) - Build Gatus
+name: Build Gatus' Job (1/2) - Build Gatus
 
-# FILL THE MISSING VALUES BELOW
 on:
   workflow_dispatch:
 
 env:
-  AWS_REGION:
-  ECR_REPOSITORY:
-  ECS_CLUSTER:
+  AWS_REGION: "us-east-1"
+  ECR_REPOSITORY: "lks-getus"
+  ECS_CLUSTER: "lks-oss-cluster"
   TOKEN: ${{ secrets.TOKEN }}
 
-  ECS_GATUS_SERVICE:
-  GATUS_TASK_DEFINITION:
+  ECS_GATUS_SERVICE: "gatus-service"
+  GATUS_TASK_DEFINITION: "lks-gatus-app"
   GATUS_URL: "??? ${{ secrets.ALB_ENDPOINT }} ???"
-# FILL THE MISSING VALUES ABOVE
+
 
 permissions:
   contents: read
