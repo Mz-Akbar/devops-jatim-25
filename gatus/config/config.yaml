@@ -1,6 +1,6 @@
 alerting:
   github:
-    token: "${TOKEN}" 
+    token: "${{ secret.TOKEN }}" 
 
 
 endpoints:

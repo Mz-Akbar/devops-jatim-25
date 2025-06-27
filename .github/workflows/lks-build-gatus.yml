@@ -1,4 +1,4 @@
-name: Build Gatus' Job (1/2) - Build Gatus
+name: Example Gatus' Job (1/2) - Build Gatus
 
 on:
   workflow_dispatch:
@@ -11,7 +11,7 @@ env:
 
   ECS_GATUS_SERVICE: "gatus-service"
   GATUS_TASK_DEFINITION: "lks-gatus-app"
-  GATUS_URL: "??? ${{ secrets.ALB_ENDPOINT }} ???"
+  GATUS_URL: " ${{ secrets.ALB_ENDPOINT }} "
 
 
 permissions:
@@ -23,8 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
