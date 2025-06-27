@@ -29,6 +29,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       
 
 
@@ -45,4 +47,4 @@ jobs:
           service: ${{ env.ecs_gatus_service }}
           cluster: ${{ env.ecs_cluster }}
           force-new-deployment: true
-          run-task-tags: '[{"key": "", "value": ""} , ...]'
+          run-task-tags: '[{"key": "Gatus", "value": "Gatus App"} , ...]'

@@ -1,4 +1,4 @@
-name: Example Gatus' Job (1/2) - Build Gatus
+name: Build Gatus' Job (1/2) - Build Gatus
 
 on:
   workflow_dispatch: 
