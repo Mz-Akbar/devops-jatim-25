@@ -1,8 +1,12 @@
-name: Example Gatus' Job (2/2) - Deploy Gatus
+name: Deploy Gatus' (2/2) - Deploy Gatus
 
 
 on:
   workflow_dispatch: 
+  push:
+    branches:
+      - dev
+  
   
 
 env:
