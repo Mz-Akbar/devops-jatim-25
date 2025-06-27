@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - dev
     paths:
       - gatus/**
       - .github/workflows/lks-deployment-pipeline.yaml

@@ -1,19 +1,24 @@
-name: Example Job - Deploy Leantime
+name: Leantime
 
-# FILL THE MISSING VALUES BELOW
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - dev
+    paths:
+      - leantime/**
+      - .github/workflows/example-deploy-leantime.yml
 
 env:
-  AWS_REGION:
-  ECR_REPOSITORY:
-  ECS_CLUSTER:
-  TOKEN: ${{ secrets.TOKEN }}
+  AWS_REGION: "us-east-1"
+  ECR_REPOSITORY: "lks-leantime"
+  ECS_CLUSTER: "lks-oss-cluster"
+  TOKEN: ${{ secrets.TOKENS}}
 
-  ECS_LEANTIME_SERVICE:
-  LEANTIME_TASK_DEFINITION:
-  LEANTIME_URL: "??? ${{ secrets.ALB_ENDPOINT }} ???"
-# FILL THE MISSING VALUES ABOVE
+  ECS_LEANTIME_SERVICE: "leantime-service"
+  LEANTIME_TASK_DEFINITION: "leantime/task-definition.json"
+  LEANTIME_URL: " ${{ secrets.ALB_ENDPOINT }} "
+
 
 permissions:
   contents: read
@@ -42,4 +47,4 @@ jobs:
           service: ${{ env.ECS_LEANTIME_SERVICE }}
           cluster: ${{ env.ECS_CLUSTER }}
           force-new-deployment: true
-          run-task-tags: '[{"key": "", "value": ""} , ...]'
+          run-task-tags: '[{"key": "Leantime", "value": "Leantime App"} , ...]'
