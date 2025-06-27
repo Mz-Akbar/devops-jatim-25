@@ -53,4 +53,4 @@ jobs:
           service: ${{ env.ECS_LEANTIME_SERVICE }}
           cluster: ${{ env.ECS_CLUSTER }}
           force-new-deployment: true
-          run-task-tags: '[{"key": "Leantime", "value": "Leantime App"} , ...]'
+          run-task-tags: '[{"key": "Leantime", "value": "Leantime App"}'
