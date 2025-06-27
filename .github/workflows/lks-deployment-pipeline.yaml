@@ -18,6 +18,7 @@ env:
   ECS_GATUS_SERVICE: "gatus-service"
   GATUS_TASK_DEFINITION: "lks-gatus-app"
   GATUS_URL: " ${{ secrets.ALB_ENDPOINT }} "
+  
 
 
 permissions:

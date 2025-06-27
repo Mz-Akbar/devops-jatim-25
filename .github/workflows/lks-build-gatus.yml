@@ -2,9 +2,6 @@ name: Build Gatus' Job (1/2) - Build Gatus
 
 on:
   workflow_dispatch: 
-   push:
-     branches:
-        - dev 
 
 env:
   AWS_REGION: "us-east-1"
@@ -13,7 +10,7 @@ env:
   TOKEN: ${{ secrets.TOKEN }}
 
   ECS_GATUS_SERVICE: "gatus-service"
-  GATUS_TASK_DEFINITION: "lks-gatus-app"
+  GATUS_TASK_DEFINITION: "task-definition.json"
   GATUS_URL: " ${{ secrets.ALB_ENDPOINT }} "
 
 
@@ -77,4 +74,6 @@ jobs:
           service: ${{ env.ECS_GATUS_SERVICE }}
           cluster: ${{ env.ECS_CLUSTER }}
           force-new-deployment: true
-          run-task-tags: '[{"key": "", "value": ""} , ...]'
+          run-task-tags: '[{"key": "ecs td", "value": "Td update"} , ...]'
+
+  
