@@ -40,6 +40,12 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: ${{ env.AWS_REGION }}
 
+      - name: Update ECS task definition
+        run: |
+          sed -i "s|<task-def-image>|$IMAGE_FULL_URI|g" $LEANTIME_TASK_DEFINITION
+          echo "Task definition updated."
+          cat $LEANTIME_TASK_DEFINITION
+
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:
