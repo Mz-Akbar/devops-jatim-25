@@ -16,9 +16,9 @@ env:
   TOKEN: ${{ secrets.TOKEN }}
 
   ECS_GATUS_SERVICE: "gatus-service"
-  GATUS_TASK_DEFINITION: "lks-gatus-app"
+  GATUS_TASK_DEFINITION: "task-definition.json"
   GATUS_URL: " ${{ secrets.ALB_ENDPOINT }} "
-  
+
 
 
 permissions:
