@@ -1,4 +1,4 @@
-name: Deploy gatus and leantime
+name: Deploy gatus and leantime apps
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
     paths:
       - "gatus/**" 
       - "leantime/**"
+      - "lks-deployment-pipeline.yaml/**"
       
 env:
   AWS_REGION: "us-east-1"
