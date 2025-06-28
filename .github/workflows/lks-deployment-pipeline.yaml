@@ -80,6 +80,6 @@ jobs:
           service: ${{ env.ECS_GATUS_SERVICE }}
           cluster: ${{ env.ECS_CLUSTER }}
           force-new-deployment: true
-          run-task-tags: '[{"key": "ecs td", "value": "Td update"}'
+          run-task-tags: '[{"key": "ecs td", "value": "Td update"}]'
 
   
