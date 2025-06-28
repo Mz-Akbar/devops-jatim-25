@@ -13,8 +13,7 @@ env:
   AWS_REGION: us-east-1
   ECR_REPOSITORY: lks-leantime
   ECS_CLUSTER: lks-oss-cluster
-  #TOKEN: ${{ secrets.TOKENS}}
-
+  TOKEN: ${{ secrets.TOKENS }}
   ECS_LEANTIME_SERVICE: leantime-service
   LEANTIME_TASK_DEFINITION: leantime/task-definition.json
   LEANTIME_URL: ${{ secrets.ALB_ENDPOINT }} 
