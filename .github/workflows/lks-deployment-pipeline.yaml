@@ -6,7 +6,7 @@ on:
       - dev1
     paths:
       - "gatus/**"
-      - "leantime/**"p
+      - "leantime/**"
 
 env:
   AWS_REGION: "us-east-1"
