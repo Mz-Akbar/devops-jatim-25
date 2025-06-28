@@ -106,3 +106,5 @@ jobs:
           cluster: ${{ env.ECS_CLUSTER}} 
           force-new-deployment: true
           wait-for-service-stability: true
+          run-task-tags: '[{"key": "P", "value": "PP"}]'
+          
