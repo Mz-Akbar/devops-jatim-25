@@ -3,7 +3,7 @@ name: Deploy Leantime and Gatus
 on:
   push:
     branches:
-      - dev1
+      - dev
     paths:
       - "gatus/**"
       - "leantime/**"
