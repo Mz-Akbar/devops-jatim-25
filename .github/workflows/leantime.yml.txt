@@ -1,10 +1,12 @@
 name: Leantime
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - dev
+    paths:
+      - gatus/**
+      - leantime/**
 
 
 env:
