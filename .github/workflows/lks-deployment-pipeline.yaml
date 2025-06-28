@@ -1,15 +1,12 @@
-<<<<<<< HEAD
-=======
 name: Deploy Leantime and Gatus
 
->>>>>>> 3f9060fd2bfa7a2253bf1fa394021356eb40432b
 on:
-push:
-  branches:
-    - dev1
-  paths:
-    - "gatus/**"
-    - "leantime/**"
+  push:
+    branches:
+      - dev1
+    paths:
+      - "gatus/**"
+      - "leantime/**"p
 
 env:
   AWS_REGION: "us-east-1"
