@@ -5,9 +5,10 @@ on:
     branches:
       - dev
     paths:
+      - .github/workflows/lks-deployment-pipeline.yaml
       - gatus/**
       - leantime/**
-  workflow_dispatch:
+
 
 env:
   AWS_REGION: "us-east-1"
