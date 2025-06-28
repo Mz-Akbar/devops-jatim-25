@@ -10,7 +10,7 @@ on:
       - leantime/**
 
 
-env:
+env: 
   AWS_REGION: "us-east-1"
   TOKEN: ${{ secrets.TOKENS }}
   ECS_CLUSTER: "lks-oss-cluster"
