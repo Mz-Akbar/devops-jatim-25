@@ -18,13 +18,14 @@
   "containerDefinitions": [
     {
       "name": "gatus",
-      "image": "<task-def-image>", 
+      "image": "twinproduction/gatus:latest", 
+      "cpu": 0,
       "essential": true,
       "volumesFrom": [],
       "systemControls": [],
 
-     
-      "portMappings": [ 
+
+      "portMappings": [
         {
           "containerPort": 8080,
           "hostPort": 8080,
