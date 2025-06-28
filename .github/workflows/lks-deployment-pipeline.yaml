@@ -1,4 +1,4 @@
-name: project-lks-deployment-pipeline
+name: Deploy gatus and leantime
 
 on:
   push:
@@ -14,7 +14,7 @@ env:
   ECS_CLUSTER: "lks-oss-cluster"
   TOKEN: ${{ secrets.TOKENS }}
   LEANTIME_URL: "${{ secrets.ALB_ENDPOINT }}"
-  LEANTIME_TASK_DEFINITION: "leantime/task-definition.json"
+  LEANTIME_TASK_DEFINITION: leantime/task-definition.json
   ECS_LEANTIME_SERVICE: "leantime-service"
   ECS_GATUS_SERVICE: "gatus-service"
   GATUS_TASK_DEFINITION: "gatus/task-definition.json"
@@ -36,6 +36,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          #aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Login to Amazon ECR
@@ -77,8 +78,8 @@ jobs:
           service: ${{ env.ECS_GATUS_SERVICE }}
           cluster: ${{ env.ECS_CLUSTER }}
           force-new-deployment: true
-          wait-for-service-stability: true
-         
+          run-task-tags: '[{"key": "ecs td", "value": "Td update"}]'
+
   
   deploy_leantime:
     name: Deploy Leantime App
@@ -93,14 +94,5 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          #aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: ${{ env.AWS_REGION }}
-
-
-      - name: Deploy Amazon ECS task definition
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
-        with:
-          task-definition: ${{ env.LEANTIME_TASK_DEFINITION }}
-          service: ${{ env.ECS_LEANTIME_SERVICE }}
-          cluster: ${{ env.ECS_CLUSTER }}
-          force-new-deployment: true
-          wait-for-service-stability: true
