@@ -1,21 +1,17 @@
-{ 
-  "family": " lks-leantime-app",
+{
+  "family": "lks-leantime-app",
   "taskRoleArn": "arn:aws:iam::663861047640:role/ecsTaskExecutionRole",
   "executionRoleArn": "arn:aws:iam::663861047640:role/ecsTaskExecutionRole",
   "networkMode": "awsvpc",
-  "requiresCompatibilities": "FARGATE",
+  "requiresCompatibilities": ["FARGATE"],
   "cpu": "1024",
   "memory": "2048",
   "volumes": [],
-  
-
   "placementConstraints": [],
   "runtimePlatform": {
     "cpuArchitecture": "X86_64",
     "operatingSystemFamily": "LINUX"
   },
-  "enableFaultInjection": false,
-
   "containerDefinitions": [
     {
       "name": "leantime",
@@ -24,8 +20,6 @@
       "essential": true,
       "volumesFrom": [],
       "systemControls": [],
-
-     
       "portMappings": [
         {
           "containerPort": 8080,
@@ -33,8 +27,46 @@
           "protocol": "tcp"
         }
       ],
-      "secrets": 
-      "environment":
+      "secrets": [
+        {
+          "name": "DB_PASSWORD",
+          "valueFrom": "/lks/db/password"
+        },
+        {
+          "name": "DB_USERNAME",
+          "valueFrom": "/lks/db/username"
+        }
+      ],
+      "environment": [
+        {
+          "name": "DB_PORT",
+          "value": "/lks/db/port"
+        },
+        {
+          "name": "DB_NAME",
+          "value": "/lks/db/name"
+        },
+        {
+          "name": "TIMEZONE",
+          "value": "Asia/Jakarta"
+        },
+        {
+          "name": "APP_PORT",
+          "value": "8080"
+        },
+        {
+          "name": "APP_URL",
+          "value": "lks-oss-lb-1750079067.us-east-1.elb.amazonaws.com"
+        },
+        {
+          "name": "DB_HOST",
+          "value": "/lks/db/host"
+        },
+        {
+          "name": "SITE_NAME",
+          "value": "LKS Leantime"
+        }
+      ],
       "mountPoints": [
         {
           "sourceVolume": "public-userfiles",
@@ -44,6 +76,11 @@
         {
           "sourceVolume": "userfiles",
           "containerPath": "/var/www/html/userfiles",
+          "readOnly": false
+        },
+        {
+          "sourceVolume": "plugins",
+          "containerPath": "/var/www/html/app/Plugins",
           "readOnly": false
         }
       ],
