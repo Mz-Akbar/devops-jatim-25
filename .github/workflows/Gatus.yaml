@@ -5,8 +5,7 @@ on:
     branches:
       - dev
     paths:
-      - gatus/**
-      - leantime/**
+      - ".github/workflows/Gatus.yaml"
       
 env:
   AWS_REGION: "us-east-1"
