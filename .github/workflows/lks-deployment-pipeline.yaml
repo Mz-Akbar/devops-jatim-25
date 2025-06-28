@@ -1,4 +1,4 @@
-name: Deploy gatus and leantime apps
+name: Deploy gatus and leantime
 
 on:
   push:
@@ -7,19 +7,19 @@ on:
     paths:
       - "gatus/**" 
       - "leantime/**"
-      - "lks-deployment-pipeline.yaml/**"
+      - ".github/workflows/lks-deployment-pipeline.yaml"
       
 env:
   AWS_REGION: "us-east-1"
-  ECR_REPOSITORY: "lks-gatus"
+  ECR_REPOSITORY: "lks-getus"
   ECS_CLUSTER: "lks-oss-cluster"
   TOKEN: ${{ secrets.TOKENS }}
-  LEANTIME_URL: "${{ secrets.ALB_ENDPOINT }}"
+  LEANTIME_URL: "http://${{ secrets.ALB_ENDPOINT }}"
   LEANTIME_TASK_DEFINITION: leantime/task-definition.json
   ECS_LEANTIME_SERVICE: "leantime-service"
   ECS_GATUS_SERVICE: "gatus-service"
   GATUS_TASK_DEFINITION: "gatus/task-definition.json"
-  GATUS_URL: "${{ secrets.ALB_ENDPOINT }}" 
+  GATUS_URL: "http://${{ secrets.ALB_ENDPOINT }}:8080" 
 
 
 jobs:
