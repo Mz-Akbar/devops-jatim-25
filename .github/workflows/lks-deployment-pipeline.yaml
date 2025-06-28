@@ -1,35 +1,35 @@
-name: Deploy Leantime and Gatus
+name: Deploy gatus and leantime
 
 on:
   push:
     branches:
       - dev
     paths:
-      - "gatus/**"
+      - "gatus/**" 
       - "leantime/**"
-
+      
 env:
   AWS_REGION: "us-east-1"
-  ECR_REPOSITORY: "lks-gatus"
+  ECR_REPOSITORY: "lks-getus"
   ECS_CLUSTER: "lks-oss-cluster"
   TOKEN: ${{ secrets.TOKENS }}
-  LEANTIME_URL: " ${{ secrets.ALB_ENDPOINT }} "
-  LEANTIME_TASK_DEFINITION: "leantime/task-definition.json"
-  ECS_LEANTIME_SERVICE : "leantime-service"
+  LEANTIME_URL: "${{ secrets.ALB_ENDPOINT }}"
+  LEANTIME_TASK_DEFINITION: leantime/task-definition.json
+  ECS_LEANTIME_SERVICE: "leantime-service"
   ECS_GATUS_SERVICE: "gatus-service"
   GATUS_TASK_DEFINITION: "gatus/task-definition.json"
-  GATUS_URL: " ${{ secrets.ALB_ENDPOINT }} "
-
+  GATUS_URL: "${{ secrets.ALB_ENDPOINT }}" 
 
 
 jobs:
-  deploy_Gatus:
+  deploy_gatus:
     name: Deploy Gatus App
     runs-on: ubuntu-latest
     environment: dev
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -51,7 +51,6 @@ jobs:
           echo "Cofiguration updated."
           cat gatus/config/config.yaml
 
-
       - name: Get Short Commit Hash
         run: echo "IMAGE_TAG=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
         shell: bash
@@ -67,22 +66,22 @@ jobs:
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
           echo "IMAGE_FULL_URI=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_ENV
 
-
       - name: Update ECS task definition
         run: |
           sed -i "s|<task-def-image>|$IMAGE_FULL_URI|g" $GATUS_TASK_DEFINITION
           echo "Task definition updated."
           cat $GATUS_TASK_DEFINITION
-
       - name: deploy ecs task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:
           task-definition: ${{ env.GATUS_TASK_DEFINITION }}
           service: ${{ env.ECS_GATUS_SERVICE }}
-          cluster: ${{ env.ecs_CLUSTER }}
+          cluster: ${{ env.ECS_CLUSTER }}
           force-new-deployment: true
+          run-task-tags: '[{"key": "ecs td", "value": "Td update"}]'
 
-  Deploy_Leantime:
+  
+  deploy_leantime:
     name: Deploy Leantime App
     runs-on: ubuntu-latest
     environment: dev
@@ -95,14 +94,15 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          #aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: ${{ env.AWS_REGION }}
+
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:
-          task-definition: ${{ env.LEANTIME_TASK_DEFINITION }} 
-          service: ${{ env.ECS_LEANTIME_SERVICE }} 
-          cluster: ${{ env.ECS_CLUSTER}} 
+          task-definition: ${{ env.LEANTIME_TASK_DEFINITION }}
+          service: ${{ env.ECS_LEANTIME_SERVICE }}
+          cluster: ${{ env.ECS_CLUSTER }}
           force-new-deployment: true
           wait-for-service-stability: true
