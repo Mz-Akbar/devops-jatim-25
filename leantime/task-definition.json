@@ -98,7 +98,7 @@
           "value": "1000"
         },
         {
-          "name": "LEAN_DB_DEBUG",
+          "name": "DB_DEBUG",
           "value": "0"
         },  
         {
