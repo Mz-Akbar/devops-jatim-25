@@ -1,13 +1,12 @@
 name: Gatus
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - dev
     paths:
       - gatus/**
-      - .github/workflows/lks-deployment-pipeline.yaml
+      - leantime/**
 
 env:
   AWS_REGION: "us-east-1"

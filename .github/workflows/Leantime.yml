@@ -5,9 +5,7 @@ on:
   push:
     branches:
       - dev
-    paths:
-      - leantime/**
-      - .github/workflows/lks-deploy-leantime.yml
+
 
 env:
   AWS_REGION: us-east-1
