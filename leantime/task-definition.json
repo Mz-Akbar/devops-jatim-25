@@ -6,7 +6,46 @@
   "requiresCompatibilities": ["FARGATE"],
   "cpu": "1024",
   "memory": "2048",
-  "volumes": [],
+  "volumes": [
+    {
+      "name": "public-userfiles",
+      "efsVolumeConfiguration": {
+        "fileSystemId": "fs-084ba3f781ed76b25",
+        "rootDirectory": "/",
+        "transitEncryption": "ENABLED",
+        "authorizationConfig": {
+          "accessPointId": "fsap-09d036eca38436efa",
+          "iam": "ENABLED"
+        }
+      }
+    },
+
+    {
+      "name": "userfiles",
+      "efsVolumeConfiguration": {
+        "fileSystemId": "fs-084ba3f781ed76b25",
+        "rootDirectory": "/",
+        "transitEncryption": "ENABLED",
+        "authorizationConfig": {
+          "accessPointId": "fsap-0bbcf9bd8544d90f3",
+          "iam": "ENABLED"
+        }
+      }
+    },
+
+    {
+      "name": "plugins",
+      "efsVolumeConfiguration": {
+        "fileSystemId": "fs-084ba3f781ed76b25",
+        "rootDirectory": "/",
+        "transitEncryption": "ENABLED",
+        "authorizationConfig": {
+          "accessPointId": "fsap-0fe66e7512579b704",
+          "iam": "ENABLED"
+        }
+      }
+    },
+  ],
   "placementConstraints": [],
   "runtimePlatform": {
     "cpuArchitecture": "X86_64",
@@ -28,20 +67,40 @@
         }
       ],
       "secrets": [
-        {
-          "name": "DB_PASSWORD",
-          "valueFrom": "/lks/db/password"
+         {
+          "name": "LEAN_DB_DATABASE",
+          "valueFrom": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/name"
         },
         {
-          "name": "DB_USERNAME",
-          "valueFrom": "/lks/db/username"
+          "name": "LEAN_DB_HOST",
+          "valueFrom": "arn:aws:ssm:us-east-1:748381872886:parameter/lks/db/host"
+        },
+        {
+          "name": "LEAN_DB_PASSWORD",
+          "valueFrom": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/password"
+        },
+        {
+          "name": "LEAN_DB_PORT",
+          "valueFrom": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/port"
+        },
+        {
+          "name": "LEAN_DB_USER",
+          "valueFrom": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/username"
         }
       ],
       "environment": [
         {
-          "name": "DB_PORT",
-          "value": "/lks/db/port"
+          "name": "PUID",
+          "value": "1000"
         },
+        {
+          "name": "PIGD",
+          "value": "1000"
+        },
+        {
+          "name": "DB_DEBUG"
+          "value": "0"
+        }
         {
           "name": "DB_NAME",
           "value": "/lks/db/name"
@@ -55,17 +114,17 @@
           "value": "8080"
         },
         {
+          "name": "LEAN_LANGUAGE",
+          "value": "en-US"
+        }
+        {
           "name": "APP_URL",
           "value": "lks-oss-lb-1750079067.us-east-1.elb.amazonaws.com"
         },
         {
-          "name": "DB_HOST",
-          "value": "/lks/db/host"
+          "name": "LEAN_SITENAME",
+          "value": "Leantime"
         },
-        {
-          "name": "SITE_NAME",
-          "value": "LKS Leantime"
-        }
       ],
       "mountPoints": [
         {

@@ -1,27 +1,24 @@
 name: Leantime
 
-#on:
+on:
   workflow_dispatch:
   push:
     branches:
       - dev
     paths:
       - leantime/**
-      - .github/workflows/example-deploy-leantime.yml
+      - .github/workflows/lks-deploy-leantime.yml
 
 env:
-  AWS_REGION: "us-east-1"
-  ECR_REPOSITORY: "lks-leantime"
-  ECS_CLUSTER: "lks-oss-cluster"
-  TOKEN: ${{ secrets.TOKENS}}
+  AWS_REGION: us-east-1
+  ECR_REPOSITORY: lks-leantime
+  ECS_CLUSTER: lks-oss-cluster
+  #TOKEN: ${{ secrets.TOKENS}}
 
-  ECS_LEANTIME_SERVICE: "leantime-service"
-  LEANTIME_TASK_DEFINITION: "leantime/task-definition.json"
-  LEANTIME_URL: " ${{ secrets.ALB_ENDPOINT }} "
+  ECS_LEANTIME_SERVICE: leantime-service
+  LEANTIME_TASK_DEFINITION: leantime/task-definition.json
+  LEANTIME_URL: ${{ secrets.ALB_ENDPOINT }} 
 
-
-permissions:
-  contents: read
 
 jobs:
   deploy:
@@ -40,13 +37,6 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: ${{ env.AWS_REGION }}
 
-    
-
-      - name: Update ECS task definition
-        run: |
-          sed -i "s|<task-def-image>|$IMAGE_FULL_URI|g" $LEANTIME_TASK_DEFINITION
-          echo "Task definition updated."
-          cat $LEANTIME_TASK_DEFINITION
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
@@ -55,4 +45,4 @@ jobs:
           service: ${{ env.ECS_LEANTIME_SERVICE }}
           cluster: ${{ env.ECS_CLUSTER }}
           force-new-deployment: true
-          run-task-tags: '[{"key": "Leantime", "value": "Leantime App"}'
+          wait-for-service-stability: true
