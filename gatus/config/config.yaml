@@ -1,7 +1,7 @@
 alerting:
   github: 
     owner: "Mz-Akbar"
-    repo: "devops-jatim-25"
+    repository: "devops-jatim-25"
     token: "${{ secret.TOKEN }}" 
 
 
