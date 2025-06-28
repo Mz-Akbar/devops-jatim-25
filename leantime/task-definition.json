@@ -7,6 +7,7 @@
   "cpu": "1024",
   "memory": "2048",
   "volumes": [
+<<<<<<< HEAD
      {
       "name": "public_userfiles",
       "efsVolumeConfiguration": {
@@ -15,10 +16,21 @@
         "transitEncryption": "ENABLED",
         "authorizationConfig": {
           "accessPointId": "fsap-0b51905c14afa7c98",
+=======
+    {
+      "name": "public-userfiles",
+      "efsVolumeConfiguration": {
+        "fileSystemId": "fs-084ba3f781ed76b25",
+        "rootDirectory": "/",
+        "transitEncryption": "ENABLED",
+        "authorizationConfig": {
+          "accessPointId": "fsap-09d036eca38436efa",
+>>>>>>> 8f284fb83f68220a8efdcf02a198df3e45193dac
           "iam": "ENABLED"
         }
       }
     },
+<<<<<<< HEAD
     {
       "name": "userfiles",
       "efsVolumeConfiguration": {
@@ -45,13 +57,44 @@
     }
   ],
 
+=======
+>>>>>>> 8f284fb83f68220a8efdcf02a198df3e45193dac
 
+    {
+      "name": "userfiles",
+      "efsVolumeConfiguration": {
+        "fileSystemId": "fs-084ba3f781ed76b25",
+        "rootDirectory": "/",
+        "transitEncryption": "ENABLED",
+        "authorizationConfig": {
+          "accessPointId": "fsap-0bbcf9bd8544d90f3",
+          "iam": "ENABLED"
+        }
+      }
+    },
+
+    {
+      "name": "plugins",
+      "efsVolumeConfiguration": {
+        "fileSystemId": "fs-084ba3f781ed76b25",
+        "rootDirectory": "/",
+        "transitEncryption": "ENABLED",
+        "authorizationConfig": {
+          "accessPointId": "fsap-0fe66e7512579b704",
+          "iam": "ENABLED"
+        }
+      }
+    }
+  ],
   "placementConstraints": [],
   "runtimePlatform": {
     "cpuArchitecture": "X86_64",
     "operatingSystemFamily": "LINUX"
   },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8f284fb83f68220a8efdcf02a198df3e45193dac
   "containerDefinitions": [
     {
       "name": "leantime",
@@ -60,15 +103,22 @@
       "essential": true,
       "volumesFrom": [],
       "systemControls": [],
+<<<<<<< HEAD
 
       "portMappings": [
         {
           "containerPOrt": 8080,
+=======
+      "portMappings": [
+        {
+          "containerPort": 8080,
+>>>>>>> 8f284fb83f68220a8efdcf02a198df3e45193dac
           "hostPort": 8080,
           "protocol": "tcp"
         }
       ],
       "secrets": [
+<<<<<<< HEAD
         {
           "name": "DB_DATABASE",
           "valueFrom": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/name"
@@ -87,6 +137,26 @@
         },
         {
           "name": "DB_USER",
+=======
+         {
+          "name": "LEAN_DB_DATABASE",
+          "valueFrom": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/name"
+        },
+        {
+          "name": "LEAN_DB_HOST",
+          "valueFrom": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/host"
+        },
+        {
+          "name": "LEAN_DB_PASSWORD",
+          "valueFrom": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/password"
+        },
+        {
+          "name": "LEAN_DB_PORT",
+          "valueFrom": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/port"
+        },
+        {
+          "name": "LEAN_DB_USER",
+>>>>>>> 8f284fb83f68220a8efdcf02a198df3e45193dac
           "valueFrom": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/username"
         }
       ],
@@ -96,14 +166,34 @@
           "value": "1000"
         },
         {
+<<<<<<< HEAD
           "name": "PGID",
           "value": "1000"
         },
         {
+=======
+          "name": "PIGD",
+          "value": "1000"
+        },
+        {
+          "name": "DB_DEBUG",
+          "value": "0"
+        },  
+        {
+          "name": "DB_NAME",
+          "value": "/lks/db/name"
+        },
+        {
+          "name": "TIMEZONE",
+          "value": "Asia/Jakarta"
+        },
+        {
+>>>>>>> 8f284fb83f68220a8efdcf02a198df3e45193dac
           "name": "APP_PORT",
           "value": "8080"
         },
         {
+<<<<<<< HEAD
           "name": "LEAN_DEBUG",
           "value": "0"
         },
@@ -112,21 +202,36 @@
           "value": "LKS Leantime"
         },
         {
+=======
+>>>>>>> 8f284fb83f68220a8efdcf02a198df3e45193dac
           "name": "LEAN_LANGUAGE",
           "value": "en-US"
         },
         {
+<<<<<<< HEAD
           "name": "LEAN_DEFAULT_TIMEZONE",
           "value": "Asia/Jakarta"
         },
         {
           "name": "DB_NAME",
           "value": "/lks/db/name"
+=======
+          "name": "APP_URL",
+          "value": "lks-oss-lb-1750079067.us-east-1.elb.amazonaws.com"
+        },
+        {
+          "name": "LEAN_SITENAME",
+          "value": "Leantime"
+>>>>>>> 8f284fb83f68220a8efdcf02a198df3e45193dac
         }
       ],
       "mountPoints": [
         {
+<<<<<<< HEAD
           "sourceVolume": "public_userfiles",
+=======
+          "sourceVolume": "public-userfiles",
+>>>>>>> 8f284fb83f68220a8efdcf02a198df3e45193dac
           "containerPath": "/var/www/html/public/userfiles",
           "readOnly": false
         },
@@ -140,12 +245,20 @@
           "containerPath": "/var/www/html/app/Plugins",
           "readOnly": false
         }
+<<<<<<< HEAD
       ]
       ,
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
           "awslogs-group": "/ecs/lks/leantime-app",
+=======
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/lks/gatus-app",
+>>>>>>> 8f284fb83f68220a8efdcf02a198df3e45193dac
           "awslogs-region": "us-east-1",
           "mode": "non-blocking",
           "awslogs-create-group": "true",
