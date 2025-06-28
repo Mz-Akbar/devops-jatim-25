@@ -54,7 +54,7 @@
   "containerDefinitions": [
     {
       "name": "leantime",
-      "image": "<task-def-image>",
+      "image": "leantime/leantime:latest",
       "cpu": 0,
       "essential": true,
       "volumesFrom": [],
