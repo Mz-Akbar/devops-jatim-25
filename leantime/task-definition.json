@@ -100,7 +100,7 @@
         {
           "name": "DB_DEBUG"
           "value": "0"
-        }
+        },  
         {
           "name": "DB_NAME",
           "value": "/lks/db/name"
@@ -116,7 +116,7 @@
         {
           "name": "LEAN_LANGUAGE",
           "value": "en-US"
-        }
+        },
         {
           "name": "APP_URL",
           "value": "lks-oss-lb-1750079067.us-east-1.elb.amazonaws.com"
