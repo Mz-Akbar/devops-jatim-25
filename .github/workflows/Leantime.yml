@@ -17,7 +17,7 @@ env:
 
   ECS_LEANTIME_SERVICE: leantime-service
   LEANTIME_TASK_DEFINITION: leantime/task-definition.json
-  LEANTIME_URL: ${{ secrets.ALB_ENDPOINT }} 
+   
 
 
 jobs:
