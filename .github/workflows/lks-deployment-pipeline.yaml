@@ -14,7 +14,7 @@ env:
   ECS_CLUSTER: "lks-oss-cluster"
   TOKEN: ${{ secrets.TOKENS }}
   LEANTIME_URL: "${{ secrets.ALB_ENDPOINT }}"
-  LEANTIME_TASK_DEFINITION: leantime/task-definition.json
+  LEANTIME_TASK_DEFINITION: "leantime/task-definition.json"
   ECS_LEANTIME_SERVICE: "leantime-service"
   ECS_GATUS_SERVICE: "gatus-service"
   GATUS_TASK_DEFINITION: "gatus/task-definition.json"
@@ -78,8 +78,7 @@ jobs:
           service: ${{ env.ECS_GATUS_SERVICE }}
           cluster: ${{ env.ECS_CLUSTER }}
           force-new-deployment: true
-          wait-for-service-stability: true
-
+         
   
   deploy_leantime:
     name: Deploy Leantime App
@@ -105,4 +104,3 @@ jobs:
           service: ${{ env.ECS_LEANTIME_SERVICE }}
           cluster: ${{ env.ECS_CLUSTER }}
           force-new-deployment: true
-          wait-for-service-stability: true

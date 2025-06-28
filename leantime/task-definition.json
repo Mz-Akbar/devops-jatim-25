@@ -10,11 +10,11 @@
     {
       "name": "public-userfiles",
       "efsVolumeConfiguration": {
-        "fileSystemId": "fs-084ba3f781ed76b25",
+        "fileSystemId": "fs-0d6f98ce20a9cb640",
         "rootDirectory": "/",
         "transitEncryption": "ENABLED",
         "authorizationConfig": {
-          "accessPointId": "fsap-09d036eca38436efa",
+          "accessPointId": "fsap-0b51905c14afa7c98",
           "iam": "ENABLED"
         }
       }
@@ -23,11 +23,11 @@
     {
       "name": "userfiles",
       "efsVolumeConfiguration": {
-        "fileSystemId": "fs-084ba3f781ed76b25",
+        "fileSystemId": "fs-0d6f98ce20a9cb640",
         "rootDirectory": "/",
         "transitEncryption": "ENABLED",
         "authorizationConfig": {
-          "accessPointId": "fsap-0bbcf9bd8544d90f3",
+          "accessPointId": "fsap-0c92f00bbd21ffead",
           "iam": "ENABLED"
         }
       }
@@ -36,11 +36,11 @@
     {
       "name": "plugins",
       "efsVolumeConfiguration": {
-        "fileSystemId": "fs-084ba3f781ed76b25",
+        "fileSystemId": "fs-0d6f98ce20a9cb640",
         "rootDirectory": "/",
         "transitEncryption": "ENABLED",
         "authorizationConfig": {
-          "accessPointId": "fsap-0fe66e7512579b704",
+          "accessPointId": "fsap-01a83e351fe056740",
           "iam": "ENABLED"
         }
       }
