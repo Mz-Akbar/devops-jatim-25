@@ -1,4 +1,4 @@
-name: project
+name: project-lks-deployment-pipeline
 
 on:
   push:
