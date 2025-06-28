@@ -5,7 +5,7 @@ on:
     branches:
       - dev
     paths:
-      - "gatus/**" l
+      - "gatus/**" 
       - "leantime/**"
       
 env:
