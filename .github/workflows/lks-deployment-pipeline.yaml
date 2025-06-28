@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+name: Deploy Leantime and Gatus
+
+>>>>>>> 3f9060fd2bfa7a2253bf1fa394021356eb40432b
 on:
 push:
   branches:

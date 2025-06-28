@@ -51,7 +51,6 @@
     "cpuArchitecture": "X86_64",
     "operatingSystemFamily": "LINUX"
   },
-  "enableFaultInjection": false,
 
   "containerDefinitions": [
     {
@@ -71,23 +70,23 @@
       ],
       "secrets": [
         {
-          "name": "LEAN_DB_DATABASE",
+          "name": "DB_DATABASE",
           "valueFrom": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/name"
         },
         {
-          "name": "LEAN_DB_HOST",
+          "name": "DB_HOST",
           "valueFrom": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/host"
         },
         {
-          "name": "LEAN_DB_PASSWORD",
+          "name": "DB_PASSWORD",
           "valueFrom": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/password"
         },
         {
-          "name": "LEAN_DB_PORT",
+          "name": "DB_PORT",
           "valueFrom": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/port"
         },
         {
-          "name": "LEAN_DB_USER",
+          "name": "DB_USER",
           "valueFrom": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/username"
         }
       ],
@@ -101,7 +100,7 @@
           "value": "1000"
         },
         {
-          "name": "LEAN_PORT",
+          "name": "APP_PORT",
           "value": "8080"
         },
         {
