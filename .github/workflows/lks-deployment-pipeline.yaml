@@ -7,11 +7,10 @@ on:
     paths:
       - "gatus/**" 
       - "leantime/**"
-      - ".github/workflows/lks-deployment-pipeline.yaml"
       
 env:
   AWS_REGION: "us-east-1"
-  ECR_REPOSITORY: "lks-getus"
+  ECR_REPOSITORY: "lks-gatus"
   ECS_CLUSTER: "lks-oss-cluster"
   TOKEN: ${{ secrets.TOKENS }}
   LEANTIME_URL: "http://${{ secrets.ALB_ENDPOINT }}"
