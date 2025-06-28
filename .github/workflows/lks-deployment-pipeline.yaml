@@ -23,7 +23,7 @@ env:
 
 
 jobs:
-  Deploy_Gatus:
+  deploy_Gatus:
     name: Deploy Gatus App
     runs-on: ubuntu-latest
     environment: dev
@@ -101,8 +101,8 @@ jobs:
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:
-          task-definition: ${{ env.LEANTIME_TASK_DEFINITION }}
-          service: ${{ env.ECS_LEANTIME_SERVICE }}
-          cluster: ${{ env.ECS_CLUSTER }}
+          task-definition: ${{ env.LEANTIME_TASK_DEFINITION }} 
+          service: ${{ env.ECS_LEANTIME_SERVICE }} 
+          cluster: ${{ env.ECS_CLUSTER}} 
           force-new-deployment: true
           wait-for-service-stability: true
