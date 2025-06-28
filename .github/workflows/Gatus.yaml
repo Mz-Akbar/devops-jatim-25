@@ -21,9 +21,6 @@ env:
   GATUS_URL: "http://${{ secrets.ALB_ENDPOINT }}:8080" 
 
 
-permissions:
-  contents: read
-
 jobs:
   deploy_gatus:
     name: Deploy Gatus App
