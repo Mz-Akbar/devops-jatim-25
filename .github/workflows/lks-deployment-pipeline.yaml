@@ -1,4 +1,4 @@
-name: Gatus
+name: LKS Deploy Pipeline
 
 on:
   push:
@@ -6,38 +6,34 @@ on:
       - dev
     paths:
       - gatus/**
+      - leantime/**
+  workflow_dispatch:
 
 env:
   AWS_REGION: "us-east-1"
-  ECR_REPOSITORY: "lks-getus"
-  ECS_CLUSTER: "lks-oss-cluster"
   TOKEN: ${{ secrets.TOKENS }}
-  LEANTIME_URL: "http://${{ secrets.ALB_ENDPOINT }}"
-
-  ECS_GATUS_SERVICE: "gatus-service"
-  GATUS_TASK_DEFINITION: "gatus/task-definition.json"
-  GATUS_URL: "http://${{ secrets.ALB_ENDPOINT }}:8080" 
-
-
-permissions:
-  contents: read
+  ECS_CLUSTER: "lks-oss-cluster"
 
 jobs:
-  deploy:
+  deploy-gatus:
     name: Deploy Gatus App
     runs-on: ubuntu-latest
     environment: dev
+    env:
+      ECR_REPOSITORY: "lks-getus"
+      LEANTIME_URL: "http://${{ secrets.ALB_ENDPOINT }}"
+      ECS_GATUS_SERVICE: "gatus-service"
+      GATUS_TASK_DEFINITION: "gatus/task-definition.json"
+      GATUS_URL: "http://${{ secrets.ALB_ENDPOINT }}:8080"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          #aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Login to Amazon ECR
@@ -49,7 +45,7 @@ jobs:
           sed -i "s|<github-token>|$TOKEN|g" gatus/config/config.yaml
           sed -i "s|<leantime-url>|$LEANTIME_URL|g" gatus/config/config.yaml
           sed -i "s|<gatus-url>|$GATUS_URL|g" gatus/config/config.yaml
-          echo "Cofiguration updated."
+          echo "Configuration updated."
           cat gatus/config/config.yaml
 
       - name: Get Short Commit Hash
@@ -72,7 +68,8 @@ jobs:
           sed -i "s|<task-def-image>|$IMAGE_FULL_URI|g" $GATUS_TASK_DEFINITION
           echo "Task definition updated."
           cat $GATUS_TASK_DEFINITION
-      - name: deploy ecs task definition
+
+      - name: Deploy ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:
           task-definition: ${{ env.GATUS_TASK_DEFINITION }}
@@ -81,6 +78,30 @@ jobs:
           force-new-deployment: true
           run-task-tags: '[{"key": "ecs td", "value": "Td update"}]'
 
-  
+  deploy-leantime:
+    name: Deploy Leantime App
+    runs-on: ubuntu-latest
+    environment: dev
+    env:
+      ECR_REPOSITORY: "lks-leantime"
+      ECS_LEANTIME_SERVICE: "leantime-service"
+      LEANTIME_TASK_DEFINITION: "leantime/task-definition.json"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-  
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+        with:
+          task-definition: ${{ env.LEANTIME_TASK_DEFINITION }}
+          service: ${{ env.ECS_LEANTIME_SERVICE }}
+          cluster: ${{ env.ECS_CLUSTER }}
+          force-new-deployment: true
+          wait-for-service-stability: true
