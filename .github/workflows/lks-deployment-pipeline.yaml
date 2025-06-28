@@ -1,4 +1,4 @@
-name: Deploy gatus and leantime
+name: Deploy leantime and gatus
 
 on:
   push:
