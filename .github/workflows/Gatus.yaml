@@ -2,11 +2,12 @@ name: Gatus
 
 on:
   push:
-   workflow_run:
-    workflows: ["Deploy Leantime"]
-    types:
-      - completed
-
+    branches:
+      - dev
+    paths:
+      - gatus/**
+      - leantime/**
+      
 
 env:
   AWS_REGION: "us-east-1"
@@ -83,5 +84,29 @@ jobs:
           run-task-tags: '[{"key": "ecs td", "value": "Td update"}]'
 
   
+  deploy:
+    name: Deploy Leantime App
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          #aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+        with:
+          task-definition: ${{ env.LEANTIME_TASK_DEFINITION }}
+          service: ${{ env.ECS_LEANTIME_SERVICE }}
+          cluster: ${{ env.ECS_CLUSTER }}
+          force-new-deployment: true
+          wait-for-service-stability: true
   
