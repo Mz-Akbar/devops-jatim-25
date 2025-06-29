@@ -7,7 +7,7 @@ on:
     paths:
       - "gatus/**"
       - "leantime/**"
-      - ".github/workflows/lks-deployment-pipeline.yaml/"
+      - ".github/workflows/lks-deployment-pipeline.yaml"
 
 env:
   AWS_REGION: "us-east-1"
@@ -24,8 +24,10 @@ env:
 
 
 jobs:
-  Deploy_Gatus:
+  deploy_Gatus:
     name: Deploy Gatus App
+    needs:
+      - Deploy_Leantime
     runs-on: ubuntu-latest
     environment: dev
     steps:
@@ -84,28 +86,28 @@ jobs:
           force-new-deployment: true
           wait-for-service-stability: true
 
-  # Deploy_Leantime:
-  #   name: Deploy Leantime App
-  #   runs-on: ubuntu-latest
-  #   environment: dev
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
+  Deploy_Leantime:
+    name: Deploy Leantime App
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-  #     - name: Configure AWS credentials
-  #       uses: aws-actions/configure-aws-credentials@v1
-  #       with:
-  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  #         #aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-  #         aws-region: ${{ env.AWS_REGION }}
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          #aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: ${{ env.AWS_REGION }}
 
-  #     - name: Deploy Amazon ECS task definition
-  #       uses: aws-actions/amazon-ecs-deploy-task-definition@v2
-  #       with:
-  #         task-definition: ${{ env.LEANTIME_TASK_DEFINITION }} 
-  #         service: ${{ env.ECS_LEANTIME_SERVICE }} 
-  #         cluster: ${{ env.ECS_CLUSTER}} 
-  #         force-new-deployment: true
-  #         wait-for-service-stability: true
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+        with:
+          task-definition: ${{ env.LEANTIME_TASK_DEFINITION }} 
+          service: ${{ env.ECS_LEANTIME_SERVICE }} 
+          cluster: ${{ env.ECS_CLUSTER}} 
+          force-new-deployment: true
+          wait-for-service-stability: true
           
