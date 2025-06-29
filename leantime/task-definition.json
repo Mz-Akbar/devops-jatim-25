@@ -120,7 +120,13 @@
         {
           "name": "LEAN_SITENAME",
           "value": "Leantime"
+        },
+        {
+          "name": "APP_URL",
+          "value": "lks-oss-lb-1750079067.us-east-1.elb.amazonaws.com"
         }
+
+
       ],
       "mountPoints": [
         {
@@ -142,7 +148,7 @@
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "/ecs/lks/gatus-app",
+          "awslogs-group": "/ecs/lks/leantime-app",
           "awslogs-region": "us-east-1",
           "mode": "non-blocking",
           "awslogs-create-group": "true",
