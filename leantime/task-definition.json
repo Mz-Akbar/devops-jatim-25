@@ -103,7 +103,7 @@
         },  
         {
           "name": "DB_NAME",
-          "value": "/lks/db/name"
+          "value": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/name"
         },
         {
           "name": "TIMEZONE",
