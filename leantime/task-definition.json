@@ -101,7 +101,7 @@
           "value": "0"
         },  
         {
-          "name": "LEAN_PORT",
+          "name": "LEAN_DB_PORT",
           "value": "8080"
         },
         {
