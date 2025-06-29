@@ -24,7 +24,7 @@ env:
 
 
 jobs:
-  deploy_Gatus:
+  Deploy_Gatus:
     name: Deploy Gatus App
     needs:
       - Deploy_Leantime
