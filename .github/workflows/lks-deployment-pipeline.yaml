@@ -7,6 +7,7 @@ on:
     paths:
       - "gatus/**"
       - "leantime/**"
+      - ".github/workflows/lks-deployment-pipeline.yaml/**"
 
 env:
   AWS_REGION: "us-east-1"
