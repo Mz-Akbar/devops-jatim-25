@@ -67,23 +67,23 @@
       ],
       "secrets": [
          {
-          "name": "DB_DATABASE",
+          "name": "LEAN_DB_DATABASE",
           "valueFrom": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/name"
         },
         {
-          "name": "DB_HOST",
+          "name": "LEAN_DB_HOST",
           "valueFrom": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/host"
         },
         {
-          "name": "DB_PASSWORD",
+          "name": "LEAN_DB_PASSWORD",
           "valueFrom": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/password"
         },
         {
-          "name": "DB_PORT",
+          "name": "LEAN_DB_PORT",
           "valueFrom": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/port"
         },
         {
-          "name": "DB_USER",
+          "name": "LEAN_DB_USER",
           "valueFrom": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/username"
         }
       ],
@@ -97,7 +97,7 @@
           "value": "1000"
         },
         {
-          "name": "DB_DEBUG",
+          "name": "LEAN_DEBUG",
           "value": "0"
         },  
         {
