@@ -102,10 +102,6 @@
           "value": "0"
         },  
         {
-          "name": "DB_NAME",
-          "value": "arn:aws:ssm:us-east-1:663861047640:parameter/lks/db/name"
-        },
-        {
           "name": "TIMEZONE",
           "value": "Asia/Jakarta"
         },
@@ -120,13 +116,7 @@
         {
           "name": "LEAN_SITENAME",
           "value": "Leantime"
-        },
-        {
-          "name": "APP_URL",
-          "value": "lks-oss-lb-1750079067.us-east-1.elb.amazonaws.com"
         }
-
-
       ],
       "mountPoints": [
         {
