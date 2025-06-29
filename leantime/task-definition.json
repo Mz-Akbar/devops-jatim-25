@@ -93,6 +93,10 @@
           "name": "PUID",
           "value": "1000"
         },
+        { 
+          "name": "DB_NAME",
+          "value": "/lks/db/name"
+        },
         {
           "name": "PIGD",
           "value": "1000"
