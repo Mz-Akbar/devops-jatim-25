@@ -62,7 +62,6 @@
       "portMappings": [
         {
           "containerPort": 8080,
-          "hostPort": 8080,
           "protocol": "tcp"
         }
       ],
@@ -102,11 +101,7 @@
           "value": "0"
         },  
         {
-          "name": "TIMEZONE",
-          "value": "Asia/Jakarta"
-        },
-        {
-          "name": "APP_PORT",
+          "name": "LEAN_PORT",
           "value": "8080"
         },
         {
@@ -116,6 +111,10 @@
         {
           "name": "LEAN_SITENAME",
           "value": "Leantime"
+        },
+         {
+          "name": "LEAN_DEFAULT_TIMEZONE",
+          "value": "Asia/Jakarta"
         }
       ],
       "mountPoints": [

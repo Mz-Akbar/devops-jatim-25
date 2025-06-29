@@ -1,6 +1,9 @@
 alerting:
   github:
     token: "<github-token>"
+    owner: Mz-Akbar
+    repo: devops-jatim-25
+
 
 
 endpoints:
@@ -13,6 +16,15 @@ endpoints:
     alerts:
       - type: github
         description: "Sensei, Leantime is down! Please check and fix it."
+        failure-threshold: 3
+        success-threshold: 5
+        send-on-resolved: true
+        title: "⚠️ Alert - Leantime is down"
+        description: |
+          Gatus detected an issue with Leantime:
+          - Status: {{STATUS}}
+          - Condition: {{CONDITION}}
+          - Timestamp: {{TIMESTAMP}}
 
   - name: Gatus
     url: <gatus-url>
@@ -26,5 +38,11 @@ endpoints:
         successThreshold: 5
         send-on-resolved: true
         description: "Sensei, Gatus is down! Please check and fix it."
+        title: "⚠️ Alert - Gatus is down"
+        description: |
+          Gatus detected an issue with Gatus:
+          - Status: {{STATUS}}
+          - Condition: {{CONDITION}}
+          - Timestamp: {{TIMESTAMP}}
 
 

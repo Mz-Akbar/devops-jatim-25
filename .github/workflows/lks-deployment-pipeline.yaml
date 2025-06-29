@@ -26,8 +26,6 @@ env:
 jobs:
   deploy_Gatus:
     name: Deploy Gatus App
-    needs:
-      - Deploy_Leantime
     runs-on: ubuntu-latest
     environment: dev
     steps:
