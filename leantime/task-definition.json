@@ -140,7 +140,6 @@
           "awslogs-group": "/ecs/lks/leantime-app",
           "awslogs-region": "us-east-1",
           "mode": "non-blocking",
-          "awslogs-create-group": "true",
           "max-buffer-size": "25m",
           "awslogs-stream-prefix": "ecs"
         }
