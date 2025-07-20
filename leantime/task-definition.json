@@ -124,7 +124,7 @@
       ],
       "mountPoints": [
         {
-          "sourceVolume": "public-userfiles",
+          "sourceVolume": "public_userfiles",
           "containerPath": "var/www/html/public/userfiles",
           "readOnly": "false"
         },
