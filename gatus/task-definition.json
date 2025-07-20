@@ -1,7 +1,7 @@
 {
   "family": "lks-gatus-app",
-  "taskRoleArn": "arn:aws:iam::663861047640:role/ecsTaskExecutionRole",
-  "executionRoleArn": "arn:aws:iam::663861047640:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::919703962183:role/LabRole",
+  "executionRoleArn": "arn:aws:iam::919703962183:role/LabRole",
   "networkMode": "awsvpc",
   "volumes": [],
   "placementConstraints": [],
@@ -24,7 +24,7 @@
       "systemControls": [],
 
      
-      "portMappings": [ 
+      "portMappings": [
         {
           "containerPort": 8080,
           "hostPort": 8080,

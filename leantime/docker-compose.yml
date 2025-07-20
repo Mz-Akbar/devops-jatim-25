@@ -29,10 +29,11 @@ services:
       - leantime_db
 
 volumes:
-  db_data:
-  userfiles:
-  public_userfiles:
-  plugins:
+  db_data: "leantime_db_data"
+  userfiles: "leantime_userfiles"
+  public_userfiles: "leantime_public_userfiles"
+  plugins: "leantime_plugins"
 
 networks:
   leantime-net:
+    driver: bridge

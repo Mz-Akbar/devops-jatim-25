@@ -1,11 +1,10 @@
 alerting:
   github:
-    token: "${TOKEN}" 
-
+    token: "${TOKEN}"
 
 endpoints:
   - name: Leantime
-    url: $ {{ secret.LEANTIME_URL }} 
+    url: <leantime-url> 
     interval: 30s
     conditions:
       - "[STATUS] == 200"
@@ -15,16 +14,14 @@ endpoints:
         description: "Sensei, Leantime is down! Please check and fix it."
 
   - name: Gatus
-    url: $ {{ secret.GATUS_URL}} 
+    url: <gatus-url> 
     interval: 1m
-    conditions: 
+    conditions:
       - "[STATUS] == 200"
-      - "[RESPONS_TIME] < 500"
+      - "[RESPONSE_TIME] < 500"
     alerts:
       - type: github
         failureThreshold: 3
         successThreshold: 5
         send-on-resolved: true
         description: "Sensei, Gatus is down! Please check and fix it."
-
-
