@@ -9,7 +9,6 @@
   "cpu": "512",
   "memory": "1024",
 
-
   "runtimePlatform": {
     "cpuArchitecture": "X86_64",
     "operatingSystemFamily": "LINUX"
@@ -19,15 +18,15 @@
     {
       "name": "gatus",
       "image": "<task-def-image>", 
+      "cpu": 0,
       "essential": true,
       "volumesFrom": [],
       "systemControls": [],
 
-     
       "portMappings": [
         {
-          "containerPort": 8080,
-          "hostPort": 8080,
+          "containerPort": 8000,
+          "hostPort": 8000,
           "protocol": "tcp"
         }
       ],
