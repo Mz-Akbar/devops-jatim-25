@@ -17,7 +17,7 @@ env:
   GATUS_URL: "http://${{ secrets.ALB_ENDPOINT }}:8080"
   ECS_LEANTIME_SERVICE: "leantime-service"
   LEANTIME_TASK_DEFINITION: "leantime/task-definition.json"
-  LEANTIME_URL: "http://${{ secrets.ALB_ENDPOINT }:80"
+  LEANTIME_URL: "http://${{ secrets.ALB_ENDPOINT }}:80"
 
 
 jobs:
