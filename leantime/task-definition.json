@@ -12,7 +12,7 @@
       "efsVolumeConfiguration": {
         "fileSystemId": "fs-0fd21ee3410348278",
         "rootdirectoy": "/",
-        "transitionEncription": "ENABLED",
+        "transitEncryption": "ENABLED",
         "authorizationConfig": {
           "iam": "ENABLED",
           "acessPointId": "fsap-0079ba49bbcb12c9b"
@@ -24,7 +24,7 @@
       "efsVolumeConfiguration": {
         "fileSystemId": "fs-0fd21ee3410348278",
         "rootdirectoy": "/",
-        "transitionEncription": "ENABLED",
+        "transitEncryption": "ENABLED",
         "authorizationConfig": {
           "iam": "ENABLED",
           "acessPointId": "fsap-0079ba49bbcb12c9b"
@@ -36,7 +36,7 @@
       "efsVolumeConfiguration": {
         "fileSystemId": "fs-0fd21ee3410348278",
         "rootdirectoy": "/",
-        "transitionEncription": "ENABLED",
+        "transitEncryption": "ENABLED",
         "authorizationConfig": {
           "iam": "ENABLED",
           "acessPointId": "fsap-00e47bed37b202b60"
@@ -64,8 +64,8 @@
 
       "portMappings": [
         {
-          "containerPort": 8000,
-          "hostPort": 8000,
+          "containerPort": 8080,
+          "hostPort": 8080,
           "protocol": "tcp"
         }
       ],
