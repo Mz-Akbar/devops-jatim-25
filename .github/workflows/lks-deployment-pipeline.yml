@@ -1,4 +1,4 @@
-name: Deployment Leantime and Gatus apps
+name: Deployment Leantime and Gatus 
 
 
 on:
@@ -18,8 +18,8 @@ env:
   ECS_GATUS_SERVICE: "gatus-service"
   ECS_LEANTIME_SERVICE: "leantime-service"
   LEANTIME_TASK_DEFINITION: "leantime/task-definition.json"
-  LEANTIME_URL: "htpp:// ${{ secrets.ALB_ENDPOINT }}:80"
-  GATUS_URL: "http:// ${{ secrets.ALB_ENDPOINT }}:8080"
+  LEANTIME_URL: "htpp://${{ secrets.ALB_ENDPOINT }}:80"
+  GATUS_URL: "http://${{ secrets.ALB_ENDPOINT }}:8080"
   GATUS_TASK_DEFINITION: "gatus/task-definition.json"
 
 
