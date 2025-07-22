@@ -29,7 +29,7 @@ services:
       - leantime_db
 
 volumes:
-  db_data:
+  db_data: 
   userfiles:
   public_userfiles:
   plugins:
