@@ -14,7 +14,7 @@ env:
   AWS_REGION: "us-east-1"
   ECR_REPOSITORY: "lks-gatus"
   ECS_CLUSTER: "lks-oss-cluster-1"
-  TOKEN: "${{ secrets.TOKEN }}"
+  TOKEN: ${{ secrets.TOKEN }}
   ECS_GATUS_SERVICE: "gatus-service"
   ECS_LEANTIME_SERVICE: "leantime-service"
   LEANTIME_TASK_DEFINITION: "leantime/task-definition.json"
@@ -82,7 +82,7 @@ jobs:
           cluster: ${{ env.ECS_CLUSTER }}
           force-new-deployment: true
           run-task-tags: '[{"key": "Name", "value": "Deploy Gatus App"}]'
-
+          wait-for-service-stability: true
 
 
   deploy_leantime:
