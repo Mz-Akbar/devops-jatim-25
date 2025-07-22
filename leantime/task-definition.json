@@ -129,7 +129,7 @@
         },
         {
           "sourceVolume": "plugins",
-          "containerPath": "/var/www/html/app/Plugins",
+          "containerPath": "/var/www/html/app/plugins",
           "readOnly": false
         }
       ],
