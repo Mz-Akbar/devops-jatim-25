@@ -13,8 +13,8 @@ on:
 env:
   AWS_REGION: "us-east-1"
   ECR_REPOSITORY: "lks-gatus"
-  ECS_CLUSTER: "lks-oss-cluster-1
-  TOKEN: ${{ secrets.TOKEN }}
+  ECS_CLUSTER: "lks-oss-cluster-1"
+  TOKEN: "${{ secrets.TOKEN }}"
   ECS_GATUS_SERVICE: "gatus-service"
   ECS_LEANTIME_SERVICE: "leantime-service"
   LEANTIME_TASK_DEFINITION: "leantime/task-definition.json"
