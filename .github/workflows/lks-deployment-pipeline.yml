@@ -11,7 +11,7 @@ on:
 env:
   AWS_REGION: "us-east-1"
   ECR_REPOSITORY: "lks-gatus"
-  ECS_CLUSTER: "lks-oss-cluster-1
+  ECS_CLUSTER: "lks-oss-cluster-1"
   TOKEN: ${{ secrets.TOKEN }}
   ECS_GATUS_SERVICE: "gatus-service"
   GATUS_TASK_DEFINITION: "gatus/task-definition.json"
