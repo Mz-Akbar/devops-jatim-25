@@ -9,11 +9,9 @@ endpoints:
     interval: 30s
     conditions:
       -  "[STATUS] == 200"
-      -  "[RESPONSE_TIME] < 300
+      -  "[RESPONSE_TIME] < 300"
     alerts:
       - type: github
-        failure-threshold: 3
-        success-threshold: 2
         send-on-resolved: true
         description: "Sensei, Leantime is down! Please check and fix it."
 
@@ -22,7 +20,7 @@ endpoints:
     interval: 1m
     conditions:
     - "[STATUS] == 200"
-    - "[RESPONSE_TIME] < 500
+    - "[RESPONSE_TIME] < 500"
     alerts:
       - type: github
         failurThreshold: 3
