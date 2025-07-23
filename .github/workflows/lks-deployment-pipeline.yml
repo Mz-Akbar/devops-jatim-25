@@ -80,7 +80,7 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:
           task-definition: ${{ env.GATUS_TASK_DEFINITION }}
-          service: ${{ env.ECS_LEANTIME_SERVICE }}
+          service: ${{ env.ECS_GATUS_SERVICE }}
           cluster: ${{ env.ECS_CLUSTER }}
           force-new-deployment: true
   
