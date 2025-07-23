@@ -8,8 +8,8 @@ endpoints:
     url: <leantime-url> 
     interval: 30s
     conditions:
-      - name: "[STATUS] == 200"
-      - name: "[RESPONSE_TIME] < 300
+      -  "[STATUS] == 200"
+      -  "[RESPONSE_TIME] < 300
     alerts:
       - type: github
         failure-threshold: 3
@@ -21,8 +21,8 @@ endpoints:
     url: <gatus-url> 
     interval: 1m
     conditions:
-    - name: "[STATUS] == 200"
-    - name: "[RESPONSE_TIME] < 500
+    - "[STATUS] == 200"
+    - "[RESPONSE_TIME] < 500
     alerts:
       - type: github
         failurThreshold: 3
